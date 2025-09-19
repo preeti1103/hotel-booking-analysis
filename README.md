@@ -1,4 +1,4 @@
-# Hotel Booking Cancellation Analysis
+# Hotel Booking Data Analysis and Visualization 
 
 ## Project Overview
 This project engineered a scalable data pipeline to analyze hotel booking cancellations. The goal was to transform raw, disparate data into actionable business intelligence, identifying key drivers of cancellation rates to recommend strategies for revenue recovery.  

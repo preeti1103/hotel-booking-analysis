@@ -22,10 +22,10 @@ This project engineered a scalable data pipeline to analyze hotel booking cancel
 
 ---
 
-## 🔹 Dashboards  
+## Dashboards  
 
 ### Python (Jupyter Notebook Visualizations)  
-![Python Visuals](scripts/hotel/insights.png)  
+![Python Visuals](scripts/hotel_insights.png)  
 
 ### Power BI Dashboard  
 ![Power BI Dashboard](dashboard/Hotel-booking-performance-dashboard.png)  

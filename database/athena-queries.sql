@@ -27,27 +27,24 @@ SELECT
     ROUND(AVG(adr), 2) AS average_daily_rate
 FROM 
     "hotel_db"."cleaned_bookings"
-WHERE 
-    is_canceled = 0 -- Only count fulfilled stays
 GROUP BY 
     hotel, arrival_date_month
 ORDER BY 
     hotel, arrival_date_month;
 
--- Query: Total Revenue by Country
-
+-- Query: Estimated Room Revenue by Country
 SELECT 
     country,
-    SUM(adr * (stays_in_week_nights + stays_in_weekend_nights)) AS estimated_revenue
+    SUM(adr * (stays_in_week_nights + stays_in_weekend_nights)) AS estimated_room_revenue -- Changed alias
 FROM 
     "hotel_db"."cleaned_bookings"
 WHERE 
-    is_canceled = 0 -- Only count fulfilled stays
+    is_canceled = 0
 GROUP BY 
     country
 ORDER BY 
-    estimated_revenue DESC
-LIMIT 10; -- Show top 10 countries
+    estimated_room_revenue DESC -- Changed here too
+LIMIT 10;
 
 -- Query: Lead Time vs. Cancellation Rate
 
@@ -67,4 +64,14 @@ FROM
 GROUP BY 
     1 -- Groups by the first field (the CASE statement)
 ORDER BY 
+
     MIN(lead_time); -- Order the buckets logically
+--Query: Investigate ADR Bias
+SELECT
+    is_canceled,
+    COUNT(*) AS number_of_bookings,
+    ROUND(AVG(adr), 2) AS average_adr
+FROM
+    "hotel_db"."cleaned_bookings"
+GROUP BY
+    is_canceled;
